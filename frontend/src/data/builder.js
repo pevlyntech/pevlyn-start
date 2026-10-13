@@ -3,7 +3,8 @@
  *
  * ⚠️ START / GROWTH / CUSTOM son NIVELES CONCEPTUALES para explicar cómo
  * evoluciona una solución PEVLYN. No son planes comerciales y por eso aquí no
- * hay precios: los planes reales viven en `pricing.js` y en la sección Precios.
+ * hay precios: los planes reales viven en `agenda.js` y se muestran en la
+ * sección de suscripciones de `/agenda`.
  */
 
 export const builderGoals = [
