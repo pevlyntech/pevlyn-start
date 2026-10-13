@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { Compass, CalendarCheck, Zap, ArrowRight } from 'lucide-react'
 import Container from '../components/Container.jsx'
 import Section from '../components/Section.jsx'
@@ -55,17 +54,12 @@ const isValid = (id) => tools.some((t) => t.id === id)
 export default function DemoPage() {
   const param = useQueryParam('tool')
   const { navigate } = useRouter()
-  const [active, setActive] = useState(() => (isValid(param) ? param : tools[0].id))
 
-  // Mantiene la pestaña sincronizada con la URL al navegar atrás/adelante.
-  useEffect(() => {
-    if (isValid(param) && param !== active) setActive(param)
-  }, [param]) // eslint-disable-line react-hooks/exhaustive-deps
+  // La pestaña activa se deriva de la URL, que es su única fuente de verdad: así
+  // atrás/adelante y un enlace compartido funcionan sin estado que sincronizar.
+  const active = isValid(param) ? param : tools[0].id
 
-  const change = (id) => {
-    setActive(id)
-    navigate(`/demo?tool=${id}`, { replace: true })
-  }
+  const change = (id) => navigate(`/demo?tool=${id}`, { replace: true })
 
   const tool = tools.find((t) => t.id === active)
 

@@ -86,8 +86,6 @@ export default function Navbar() {
     }
   }, [open])
 
-  const solid = scrolled || open
-
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-200 ${
