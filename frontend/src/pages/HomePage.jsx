@@ -1,7 +1,6 @@
 import Hero from '../sections/Hero.jsx'
 import Problem from '../sections/Problem.jsx'
 import Solutions from '../sections/Solutions.jsx'
-import AgendaIntro from '../sections/AgendaIntro.jsx'
 import Process from '../sections/Process.jsx'
 import Projects from '../sections/Projects.jsx'
 import Services from '../sections/Services.jsx'
@@ -11,21 +10,11 @@ import FinalCTA from '../sections/FinalCTA.jsx'
 /**
  * / — la portada comercial.
  *
- * Su trabajo es vender la propuesta de PEVLYN y mandar a probarla. Por eso
- * NO monta aquí ninguna herramienta interactiva: el diagnóstico, la demo de
- * Agenda y el constructor viven en /demo, y el desarrollo del producto en
- * /agenda. Lo que queda aquí es el argumento, no la experiencia.
+ * Presenta la propuesta de PEVLYN:
+ *   problema → soluciones → cómo trabajamos → proyectos en marcha → servicios → dudas → contacto
  *
- *   problema → soluciones → el producto → cómo trabajamos
- *   → qué construimos → servicios → dudas → acción
- *
- * La banda que invitaba a /demo se retiró: la entrada a las herramientas son
- * ahora el CTA y los accesos de icono de la navbar (`navQuickLinks`), que
- * están siempre a la vista en vez de ocupar una sección entera.
- *
- * Cada idea aparece UNA vez. Las capas de PEVLYN y su progresión se cuentan
- * juntas en Soluciones, no en dos secciones que repetían las mismas cuatro
- * palabras.
+ * El producto PEVLYN Agenda vive en su propia página dedicada (/agenda)
+ * accesible desde el menú y accesos directos superiores.
  */
 export default function HomePage() {
   return (
@@ -33,7 +22,6 @@ export default function HomePage() {
       <Hero />
       <Problem />
       <Solutions />
-      <AgendaIntro />
       <Process />
       <Projects />
       <Services />

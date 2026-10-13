@@ -1,8 +1,6 @@
-import { ArrowRight } from 'lucide-react'
 import Container from '../components/Container.jsx'
 import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
-import Button from '../components/Button.jsx'
 import Reveal from '../components/Reveal.jsx'
 import StatusBadge from '../components/StatusBadge.jsx'
 import AgendaPreview from '../components/AgendaPreview.jsx'
@@ -50,10 +48,6 @@ export default function AgendaPage() {
                 <WhatsAppButton variant="light" size="lg" message={AGENDA_WHATSAPP}>
                   Quiero conocer PEVLYN Agenda
                 </WhatsAppButton>
-                <Button to="/demo?tool=agenda" variant="outlineLight" size="lg">
-                  Probar demo
-                  <ArrowRight size={18} aria-hidden="true" />
-                </Button>
               </div>
             </div>
 
@@ -133,9 +127,6 @@ export default function AgendaPage() {
             <WhatsAppButton variant="light" size="lg" message={AGENDA_WHATSAPP}>
               Quiero conocer PEVLYN Agenda
             </WhatsAppButton>
-            <Button to="/demo?tool=agenda" variant="outlineLight" size="lg">
-              Probar demo
-            </Button>
           </div>
         </Reveal>
       </Section>

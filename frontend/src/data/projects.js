@@ -26,10 +26,10 @@ export const projects = [
     id: 'clinica-daniel-rivera',
     name: 'Clínica Daniel Rivera',
     kind: 'Proyecto a medida',
-    status: 'En desarrollo',
+    status: 'En línea',
     description:
       'Sistema de gestión de citas adaptado a la operación de la clínica.',
-    href: 'https://clinica-daniel-rivera-1ty8.vercel.app/',
+    href: 'https://www.clinicadanielrivera.com',
   },
   {
     id: 'landing-pages',

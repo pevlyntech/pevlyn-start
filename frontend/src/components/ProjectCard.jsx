@@ -4,6 +4,8 @@ import StatusBadge from './StatusBadge.jsx'
 const statusTone = {
   'En desarrollo': 'building',
   Disponible: 'live',
+  'En línea': 'live',
+  Completado: 'live',
   Próximamente: 'soon',
 }
 
