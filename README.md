@@ -38,6 +38,39 @@ que la portada crezca sin control y hace que nada se cuente dos veces.
 
 El recorrido previsto es: conocer en `/` → probar en `/demo` → contactar.
 
+### Accesos directos de la navbar
+
+Junto al CTA hay dos botones de icono, visibles en todas las páginas y en todos
+los tamaños (`navQuickLinks`, en `src/data/navigation.js`):
+
+| Icono | Destino |
+| --- | --- |
+| Calendario | `/agenda` — el producto propio |
+| Corazón médico | Clínica Daniel Rivera — el proyecto que ya se puede ver funcionando |
+
+Sustituyen a la banda "Prueba PEVLYN" que ocupaba una sección entera de la
+portada solo para anunciar `/demo`: la misma entrada, siempre a la vista, sin
+alargar la página.
+
+La URL de la clínica **no se escribe en `navigation.js`**: se lee de
+`data/projects.js` por su `id`, que es su única fuente. Si ese proyecto se
+retira de allí, el acceso desaparece solo.
+
+Al no llevar texto, su nombre accesible lo da `aria-label` y el `title` lo
+muestra al pasar el cursor.
+
+⚠️ **La barra va justa entre 1024 y 1120px.** Los dos accesos ocupan ~96px, y
+medido ahí el CTA "Probar PEVLYN Agenda" ya no cabe en una línea. Por eso tanto
+el CTA como los enlaces fijan una sola línea solo desde `min-[1120px]`: por
+debajo envuelven, como ya hacían antes. Si se añade un enlace más al menú o se
+alarga el texto del CTA, hay que volver a medirlo.
+
+⚠️ **`body` lleva `overflow-x: hidden`**, así que un desborde horizontal no
+aparece en `documentElement.scrollWidth`: se recorta en silencio. Para
+detectarlo hay que comparar el borde derecho real de los elementos en flujo
+(`getBoundingClientRect().right`) contra `window.innerWidth`, ignorando los
+halos decorativos, que son `absolute` y sí desbordan a propósito.
+
 ### Una idea, un sitio
 
 La portada tenía dos secciones ("Soluciones" y "Evolución") que nombraban los

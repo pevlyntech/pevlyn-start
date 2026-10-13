@@ -3,7 +3,7 @@ import { Menu, X, ArrowRight } from 'lucide-react'
 import Container from '../components/Container.jsx'
 import Logo from '../components/Logo.jsx'
 import Button from '../components/Button.jsx'
-import { navLinks, navCta } from '../data/navigation.js'
+import { navLinks, navCta, navQuickLinks } from '../data/navigation.js'
 import { Link, useRouter } from '../lib/router.jsx'
 
 /**
@@ -23,6 +23,44 @@ import { Link, useRouter } from '../lib/router.jsx'
 function isActive(to, pathname) {
   if (to.includes('#')) return false
   return to === pathname
+}
+
+/**
+ * Acceso directo de icono.
+ *
+ * Es un botón sin texto, así que su nombre accesible lo da `aria-label` y el
+ * `title` lo muestra al pasar el cursor. Mide 40px, igual que el botón de
+ * menú, para que los tres círculos de la derecha se lean como una familia.
+ */
+function QuickLink({ item, onClick }) {
+  const Icon = item.icon
+  const name = item.external ? `${item.label} (se abre en otra pestaña)` : item.label
+
+  const shared = {
+    className:
+      'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full ' +
+      'text-ink/80 ring-1 ring-linen-stone/60 transition-colors ' +
+      'hover:bg-warm-linen hover:text-periwinkle hover:ring-periwinkle',
+    title: `${item.label} — ${item.hint}`,
+    'aria-label': name,
+    onClick,
+  }
+
+  const content = <Icon size={18} strokeWidth={2} aria-hidden="true" />
+
+  if (item.external) {
+    return (
+      <a href={item.href} target="_blank" rel="noreferrer noopener" {...shared}>
+        {content}
+      </a>
+    )
+  }
+
+  return (
+    <Link to={item.to} {...shared}>
+      {content}
+    </Link>
+  )
 }
 
 export default function Navbar() {
@@ -86,7 +124,7 @@ export default function Navbar() {
                       }
                     }}
                     aria-current={active ? 'page' : undefined}
-                    className={`inline-flex h-9 items-center rounded-full px-3.5 font-sans text-sm tracking-[0.05em] transition-colors ${
+                    className={`inline-flex h-9 items-center rounded-full px-2.5 font-sans text-sm tracking-[0.05em] transition-colors min-[1120px]:whitespace-nowrap xl:px-3.5 ${
                       active
                         ? 'bg-lavender-mist/35 font-semibold text-periwinkle'
                         : 'font-normal text-ink/80 hover:bg-warm-linen hover:text-periwinkle'
@@ -100,9 +138,24 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          {navQuickLinks.map((item) => (
+            <QuickLink key={item.id} item={item} onClick={() => setOpen(false)} />
+          ))}
+
+          {/* El CTA a una línea solo desde 1120px: medido, es el ancho mínimo
+              en el que caben logo + seis enlaces + los dos accesos + el botón.
+              Por debajo se parte en dos renglones, igual que ya hacía antes.
+              Y nunca en el menú móvil, donde va a ancho completo: ahí
+              `whitespace-nowrap` empuja el min-content y provoca scroll
+              horizontal a 320px. */}
           <span className="hidden sm:block">
-            <Button to={navCta.to} size="sm" variant="primary" className="rounded-xl">
+            <Button
+              to={navCta.to}
+              size="sm"
+              variant="primary"
+              className="rounded-xl min-[1120px]:whitespace-nowrap"
+            >
               {navCta.label}
             </Button>
           </span>
