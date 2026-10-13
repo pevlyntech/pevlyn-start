@@ -4,6 +4,10 @@ const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
 
+// Sin animación posible (o no deseada): el contenido arranca ya visible.
+const startsVisible = () =>
+  prefersReducedMotion() || typeof IntersectionObserver === 'undefined'
+
 /**
  * Revela un elemento al entrar en el viewport.
  *
@@ -13,13 +17,10 @@ const prefersReducedMotion = () =>
  */
 export function useReveal({ threshold = 0.15, rootMargin = '0px 0px -60px 0px' } = {}) {
   const ref = useRef(null)
-  const [visible, setVisible] = useState(() => prefersReducedMotion())
+  const [visible, setVisible] = useState(startsVisible)
 
   useEffect(() => {
-    if (prefersReducedMotion() || typeof IntersectionObserver === 'undefined') {
-      setVisible(true)
-      return
-    }
+    if (startsVisible()) return
 
     const node = ref.current
     if (!node) return

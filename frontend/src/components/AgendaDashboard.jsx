@@ -3,22 +3,14 @@ import {
   Smartphone,
   Laptop,
   CalendarDays,
-  Clock,
-  User,
   Scissors,
   Check,
-  CheckCircle2,
-  X,
-  ChevronRight,
   Plus,
   ArrowRight,
   Search,
-  Building2,
   Sparkles,
   MapPin,
   Phone,
-  ShieldCheck,
-  RotateCcw,
 } from 'lucide-react'
 import isotipo from '../assets/pevlyn-isotipo.webp'
 import DemoAppointment from './DemoAppointment.jsx'

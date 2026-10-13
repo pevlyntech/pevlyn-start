@@ -4,9 +4,7 @@ import {
   Plus,
   ChevronLeft,
   ChevronRight,
-  Clock,
   Sparkles,
-  Scissors,
 } from 'lucide-react'
 import isotipo from '../assets/pevlyn-isotipo.webp'
 

@@ -1,8 +1,6 @@
 import {
   CalendarDays,
   Plus,
-  ChevronLeft,
-  ChevronRight,
   Sparkles,
 } from 'lucide-react'
 import isotipo from '../assets/pevlyn-isotipo.webp'
