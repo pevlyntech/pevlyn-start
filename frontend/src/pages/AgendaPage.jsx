@@ -3,7 +3,7 @@ import Section from '../components/Section.jsx'
 import SectionHeading from '../components/SectionHeading.jsx'
 import Reveal from '../components/Reveal.jsx'
 import StatusBadge from '../components/StatusBadge.jsx'
-import AgendaPreview from '../components/AgendaPreview.jsx'
+import HeroMockup from '../components/HeroMockup.jsx'
 import WhatsAppButton from '../components/WhatsAppButton.jsx'
 import UseCaseCard from '../components/UseCaseCard.jsx'
 import AgendaPricing from '../sections/AgendaPricing.jsx'
@@ -52,7 +52,7 @@ export default function AgendaPage() {
             </div>
 
             <div className="w-full motion-safe:animate-reveal [animation-delay:160ms]">
-              <AgendaPreview />
+              <HeroMockup />
             </div>
           </div>
         </Container>

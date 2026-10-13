@@ -1,5 +1,4 @@
 import { CalendarDays, HeartPulse } from 'lucide-react'
-import { whatsAppHref } from '../lib/whatsapp.js'
 
 /**
  * Navegación del sitio.
@@ -30,17 +29,14 @@ export const navQuickLinks = [
   {
     id: 'agenda',
     label: 'PEVLYN Agenda',
-    hint: 'Nuestro producto de citas',
+    hint: 'En desarrollo',
     icon: CalendarDays,
-    to: '/agenda',
   },
   {
     id: 'health',
     label: 'PEVLYN Health',
     hint: 'En desarrollo',
     icon: HeartPulse,
-    href: whatsAppHref('¡Hola PEVLYN! Me interesa conocer más sobre PEVLYN Health.'),
-    external: true,
   },
 ]
 

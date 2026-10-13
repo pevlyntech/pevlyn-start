@@ -34,7 +34,7 @@ function isActive(to, pathname) {
  */
 function QuickLink({ item, onClick }) {
   const Icon = item.icon
-  const name = item.external ? `${item.label} (se abre en otra pestaña)` : item.label
+  const name = item.hint ? `${item.label} (${item.hint})` : item.label
 
   const shared = {
     className:
@@ -48,7 +48,7 @@ function QuickLink({ item, onClick }) {
 
   const content = <Icon size={18} strokeWidth={2} aria-hidden="true" />
 
-  if (item.external) {
+  if (item.external && item.href) {
     return (
       <a href={item.href} target="_blank" rel="noreferrer noopener" {...shared}>
         {content}
@@ -56,10 +56,30 @@ function QuickLink({ item, onClick }) {
     )
   }
 
+  if (item.to) {
+    return (
+      <Link to={item.to} {...shared}>
+        {content}
+      </Link>
+    )
+  }
+
   return (
-    <Link to={item.to} {...shared}>
+    <button
+      type="button"
+      className={
+        'inline-flex h-10 w-10 shrink-0 cursor-default items-center justify-center rounded-full ' +
+        'text-ink/70 ring-1 ring-linen-stone/60 transition-colors ' +
+        'hover:bg-warm-linen/60 hover:text-periwinkle'
+      }
+      title={item.hint ? `${item.label} — ${item.hint}` : item.label}
+      aria-label={name}
+      onClick={(e) => {
+        e.preventDefault()
+      }}
+    >
       {content}
-    </Link>
+    </button>
   )
 }
 

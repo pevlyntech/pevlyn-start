@@ -1,16 +1,11 @@
 import { ArrowRight } from 'lucide-react'
 import Container from '../components/Container.jsx'
 import Button from '../components/Button.jsx'
-import HeroMockup from '../components/HeroMockup.jsx'
 import { trustPillars } from '../data/navigation.js'
 import { BRAND } from '../config/site.js'
 
 /**
- * Hero oscuro: el cambio de percepción más importante de la V2.
- *
- * La V1 era clara de principio a fin y leía como un sitio de agencia. Sobre
- * oscuro, el logo y el mockup de producto hacen que lo primero que se perciba
- * sea "aquí se construye tecnología".
+ * Hero comercial.
  */
 export default function Hero() {
   return (
@@ -21,7 +16,7 @@ export default function Hero() {
         <div className="absolute left-1/2 top-[-10rem] h-[30rem] w-[50rem] max-w-[120vw] -translate-x-1/2 rounded-full bg-lavender-mist/20 blur-3xl" />
       </div>
 
-      <Container className="pb-12 sm:pb-16 lg:pb-20">
+      <Container className="pb-16 sm:pb-20 lg:pb-24">
         {/* Cabecera centrada */}
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center motion-safe:animate-reveal">
           <span className="font-sans text-xs font-semibold uppercase tracking-open text-periwinkle">
@@ -49,13 +44,6 @@ export default function Hero() {
             <Button href="#soluciones" variant="secondary" size="lg" className="w-full rounded-xl px-7 sm:w-auto">
               Conocer soluciones
             </Button>
-          </div>
-        </div>
-
-        {/* Mockup flotante sobre la superficie (32px radius + soft shadow) */}
-        <div className="mx-auto mt-14 max-w-4xl motion-safe:animate-reveal [animation-delay:180ms] sm:mt-18">
-          <div className="rounded-[32px] bg-white p-2 sm:p-3.5 shadow-xl ring-1 ring-black/[0.04] transition-transform duration-300 hover:-translate-y-0.5">
-            <HeroMockup />
           </div>
         </div>
       </Container>
