@@ -171,7 +171,13 @@ export default function Navbar() {
               horizontal a 320px. */}
           <span className="hidden sm:block">
             <Button
-              to={navCta.to}
+              {...(navCta.href
+                ? {
+                    href: navCta.href,
+                    target: navCta.external ? '_blank' : undefined,
+                    rel: navCta.external ? 'noopener noreferrer' : undefined,
+                  }
+                : { to: navCta.to })}
               size="sm"
               variant="primary"
               className="rounded-xl min-[1120px]:whitespace-nowrap"
@@ -220,7 +226,17 @@ export default function Navbar() {
               ))}
             </ul>
           </nav>
-          <Button to={navCta.to} onClick={() => setOpen(false)} className="mt-3 w-full sm:hidden">
+          <Button
+            {...(navCta.href
+              ? {
+                  href: navCta.href,
+                  target: navCta.external ? '_blank' : undefined,
+                  rel: navCta.external ? 'noopener noreferrer' : undefined,
+                }
+              : { to: navCta.to })}
+            onClick={() => setOpen(false)}
+            className="mt-3 w-full sm:hidden"
+          >
             {navCta.label}
             <ArrowRight size={17} aria-hidden="true" />
           </Button>

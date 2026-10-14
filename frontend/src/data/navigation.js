@@ -17,20 +17,26 @@ export const navLinks = [
 ]
 
 /** CTA destacado de la navbar. */
-export const navCta = { label: 'PEVLYN Agenda', to: '/agenda' }
+export const navCta = {
+  label: 'PEVLYN Agenda',
+  href: 'https://agenda.pevlyn.com',
+  external: true,
+}
 
 /**
  * Accesos directos de la navbar: dos botones de icono, siempre visibles.
  *
- * 1. PEVLYN Agenda: nuestro producto de citas.
+ * 1. PEVLYN Agenda: acceso directo a la plataforma.
  * 2. PEVLYN Health: solución para el sector salud (en desarrollo).
  */
 export const navQuickLinks = [
   {
     id: 'agenda',
     label: 'PEVLYN Agenda',
-    hint: 'En desarrollo',
+    hint: 'Ir a la plataforma',
     icon: CalendarDays,
+    href: 'https://agenda.pevlyn.com',
+    external: true,
   },
   {
     id: 'health',
