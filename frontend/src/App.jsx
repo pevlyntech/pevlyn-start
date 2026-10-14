@@ -12,11 +12,15 @@ import { RouterProvider, useRouter } from './lib/router.jsx'
  */
 const DemoPage = lazy(() => import('./pages/DemoPage.jsx'))
 const AgendaPage = lazy(() => import('./pages/AgendaPage.jsx'))
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage.jsx'))
+const TermsPage = lazy(() => import('./pages/TermsPage.jsx'))
 
 const routes = {
   '/': HomePage,
   '/demo': DemoPage,
   '/agenda': AgendaPage,
+  '/privacidad': PrivacyPage,
+  '/terminos': TermsPage,
 }
 
 /** Reserva el alto del viewport mientras llega el chunk: evita el salto. */

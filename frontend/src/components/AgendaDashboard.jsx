@@ -349,7 +349,14 @@ export default function AgendaDashboard() {
                       <span>
                         Autorizo a {businessInfo.name} a tratar mis datos personales para gestionar
                         esta cita.{' '}
-                        <span className="text-periwinkle underline">Ver política de privacidad</span>
+                        <a
+                          href="/privacidad"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-periwinkle underline hover:text-primary-dark"
+                        >
+                          Ver política de privacidad
+                        </a>
                       </span>
                     </label>
                   </div>

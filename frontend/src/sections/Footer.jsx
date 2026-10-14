@@ -83,12 +83,17 @@ export default function Footer() {
           <div>
             <h2 className="font-heading text-sm font-semibold text-white">Legal</h2>
             <ul className="mt-4 flex flex-col gap-3">
-              {['Política de privacidad', 'Términos y condiciones'].map((item) => (
-                <li key={item} className="flex flex-wrap items-center gap-2">
-                  <span className="text-sm text-white/55">{item}</span>
-                  <span className="rounded-full bg-white/5 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-wider text-white/55">
-                    Próximamente
-                  </span>
+              {[
+                { label: 'Política de privacidad', to: '/privacidad' },
+                { label: 'Términos y condiciones', to: '/terminos' },
+              ].map((item) => (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className="text-sm text-white/55 transition-colors hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
