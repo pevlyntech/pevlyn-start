@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import Container from '../components/Container.jsx'
 import Logo from '../components/Logo.jsx'
-import Button from '../components/Button.jsx'
-import { navLinks, navCta, navQuickLinks } from '../data/navigation.js'
+import { navLinks, navQuickLinks } from '../data/navigation.js'
 import { Link, useRouter } from '../lib/router.jsx'
 
 /**
@@ -38,15 +37,21 @@ function QuickLink({ item, onClick }) {
 
   const shared = {
     className:
-      'inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full ' +
-      'text-ink/80 ring-1 ring-linen-stone/60 transition-colors ' +
-      'hover:bg-warm-linen hover:text-periwinkle hover:ring-periwinkle',
-    title: `${item.label} — ${item.hint}`,
+      'group inline-flex flex-col items-center justify-center rounded-xl px-2.5 py-1 text-ink/80 transition-colors ' +
+      'hover:bg-warm-linen hover:text-periwinkle',
+    title: item.hint ? `${item.label} — ${item.hint}` : item.label,
     'aria-label': name,
     onClick,
   }
 
-  const content = <Icon size={18} strokeWidth={2} aria-hidden="true" />
+  const content = (
+    <>
+      <Icon size={19} strokeWidth={2} className="transition-transform duration-200 motion-safe:group-hover:scale-110" aria-hidden="true" />
+      <span className="mt-0.5 font-heading text-[0.62rem] font-bold tracking-tight text-ink/75 transition-colors group-hover:text-periwinkle">
+        {item.label}
+      </span>
+    </>
+  )
 
   if (item.external && item.href) {
     return (
@@ -163,28 +168,7 @@ export default function Navbar() {
             <QuickLink key={item.id} item={item} onClick={() => setOpen(false)} />
           ))}
 
-          {/* El CTA a una línea solo desde 1120px: medido, es el ancho mínimo
-              en el que caben logo + seis enlaces + los dos accesos + el botón.
-              Por debajo se parte en dos renglones, igual que ya hacía antes.
-              Y nunca en el menú móvil, donde va a ancho completo: ahí
-              `whitespace-nowrap` empuja el min-content y provoca scroll
-              horizontal a 320px. */}
-          <span className="hidden sm:block">
-            <Button
-              {...(navCta.href
-                ? {
-                    href: navCta.href,
-                    target: navCta.external ? '_blank' : undefined,
-                    rel: navCta.external ? 'noopener noreferrer' : undefined,
-                  }
-                : { to: navCta.to })}
-              size="sm"
-              variant="primary"
-              className="rounded-xl min-[1120px]:whitespace-nowrap"
-            >
-              {navCta.label}
-            </Button>
-          </span>
+
 
           <button
             type="button"
@@ -226,20 +210,16 @@ export default function Navbar() {
               ))}
             </ul>
           </nav>
-          <Button
-            {...(navCta.href
-              ? {
-                  href: navCta.href,
-                  target: navCta.external ? '_blank' : undefined,
-                  rel: navCta.external ? 'noopener noreferrer' : undefined,
-                }
-              : { to: navCta.to })}
+          <a
+            href="https://agenda.pevlyn.com"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className="mt-3 w-full sm:hidden"
+            className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 font-sans text-base font-semibold text-white shadow-lift transition hover:bg-primary-dark sm:hidden"
           >
-            {navCta.label}
+            PEVLYN Agenda
             <ArrowRight size={17} aria-hidden="true" />
-          </Button>
+          </a>
         </Container>
       </div>
     </header>

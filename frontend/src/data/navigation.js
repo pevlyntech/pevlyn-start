@@ -1,4 +1,4 @@
-import { CalendarDays, HeartPulse } from 'lucide-react'
+import { CalendarDays } from 'lucide-react'
 
 /**
  * Navegación del sitio.
@@ -16,18 +16,8 @@ export const navLinks = [
   { label: 'Contacto', to: '/#contacto' },
 ]
 
-/** CTA destacado de la navbar. */
-export const navCta = {
-  label: 'PEVLYN Agenda',
-  href: 'https://agenda.pevlyn.com',
-  external: true,
-}
-
 /**
- * Accesos directos de la navbar: dos botones de icono, siempre visibles.
- *
- * 1. PEVLYN Agenda: acceso directo a la plataforma.
- * 2. PEVLYN Health: solución para el sector salud (en desarrollo).
+ * Acceso directo de la navbar: icono de agenda con enlace a la plataforma.
  */
 export const navQuickLinks = [
   {
@@ -37,12 +27,6 @@ export const navQuickLinks = [
     icon: CalendarDays,
     href: 'https://agenda.pevlyn.com',
     external: true,
-  },
-  {
-    id: 'health',
-    label: 'PEVLYN Health',
-    hint: 'En desarrollo',
-    icon: HeartPulse,
   },
 ]
 
